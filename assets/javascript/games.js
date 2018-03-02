@@ -4,7 +4,7 @@
  var losesCount = 0;
  var guesses = 0;
  var alreadyGuessed = 0;
- var remainingGuess = 10;
+ var remainingGuess = 9;
 
  //Holds the blanks in the word
  var blanks = 0;
@@ -51,7 +51,7 @@ var pressedWords = ['a','b','c','d','e','f','g','h','i','j','k',
 
     test = false;
     startGame();
-    console.log('reset');
+    // console.log('reset');
 
     }
 
@@ -62,8 +62,8 @@ var pressedWords = ['a','b','c','d','e','f','g','h','i','j','k',
     }
 
 //Html changes using document.getElementById
-    documentElementById('choice').innerHTML = blankSuccess.join('');
-    documentElementById('guesses').innerHTML = remainingGuess;
+    documentElementById('letterWords').innerHTML = blankSuccess.join('');
+    documentElementById('remainingGuess').innerHTML = remainingGuess;
     documentElementById('winCount').innerHTML = winsCount;
     documentElementById('lossCount').innerHTML = losesCount;
     documentElementById('wrongGuesses').innerHTML = wrongGuesses;
@@ -80,31 +80,25 @@ var pressedWords = ['a','b','c','d','e','f','g','h','i','j','k',
     for(var i =0; i < blanks; i++);
     {
         
-        if(blanks[i] === userKey) {
+         if(blanks[i] === userKey) {
         }
 
         {
             alreadyGuessed++;
             blankSuccess[i] = userKey;
-            documentElementById('choice').innerHTML = blankSuccess.join('');
+            documentElementById('guesses').innerHTML = blankSuccess.join('');
 
         }
 
-    }       
-
-    
-
-   else  {
-     
-    
-        wrongLetters.push(userKey);
-        remainingGuess -- ;
+    } elseif  
+       wrongLetters.push(userKey);
+        remainingGuess --;
     }
-}  
+ 
         //Changes to the html
-    documentElementById('guesses').innerHTML = remainingGuess;
+    documentElementById('remainingGuess').innerHTML = remainingGuess;
     documentElementById('wrongGuesses').innerHTML = wrongLetters;
-    }
+    
 
     
 
@@ -147,7 +141,7 @@ startGame();
     {
         if(fastfuriousWords === pressedWords[i] && test ===true)
         {
-            spliceWord = pressedWords.splice(i,1);
+            choice = pressedWords.splice(i,1);
             comapare(alreadyGuessed);
             winLose();
         }
