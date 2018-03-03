@@ -1,4 +1,6 @@
 
+//alert('Working');
+
 // Creating  variables to hold wins, loses , guesses and already guessed
  var winsCount = 0;
  var losesCount = 0;
@@ -22,7 +24,7 @@ var pressedWords = ['a','b','c','d','e','f','g','h','i','j','k',
 // Holds the words
    var fastfuriousWords =['engine','throttle','turbo','exhaust','headers','intakes','superchargers'];
 
-//Holds tho chosen word
+//Holds the chosen word
    var choice = "";
 
 //Hold the wrong letters
@@ -50,7 +52,7 @@ var pressedWords = ['a','b','c','d','e','f','g','h','i','j','k',
     blanks = letterWords.length;
 
     test = false;
-    startGame();
+    
     // console.log('reset');
 
     }
@@ -62,17 +64,17 @@ var pressedWords = ['a','b','c','d','e','f','g','h','i','j','k',
     }
 
 //Html changes using document.getElementById
-    documentElementById('letterWords').innerHTML = blankSuccess.join('');
-    documentElementById('remainingGuess').innerHTML = remainingGuess;
-    documentElementById('winCount').innerHTML = winsCount;
-    documentElementById('lossCount').innerHTML = losesCount;
-    documentElementById('wrongGuesses').innerHTML = wrongGuesses;
+    document.getElementById('letterWords').innerHTML = blankSuccess.join('');
+    document.getElementById('remainingGuess').innerHTML = remainingGuess;
+    document.getElementById('winCount').innerHTML = winsCount;
+    document.getElementById('lossCount').innerHTML = losesCount;
+    document.getElementById('wrongGuesses').innerHTML = wrongGuesses;
  
     
     function compare(userKey)
     {
 //If user key exist in the chosen word 
-        if(choice.indexof(userKey) > -1);{
+        if(pressedWords.indexof(userKey) > -1);{
 
         }
 
@@ -86,7 +88,7 @@ var pressedWords = ['a','b','c','d','e','f','g','h','i','j','k',
         {
             alreadyGuessed++;
             blankSuccess[i] = userKey;
-            documentElementById('guesses').innerHTML = blankSuccess.join('');
+            document.getElementById('guesses').innerHTML = blankSuccess.join('');
 
         }
 
@@ -96,8 +98,8 @@ var pressedWords = ['a','b','c','d','e','f','g','h','i','j','k',
     }
  
         //Changes to the html
-    documentElementById('remainingGuess').innerHTML = remainingGuess;
-    documentElementById('wrongGuesses').innerHTML = wrongLetters;
+    document.getElementById('remainingGuess').innerHTML = remainingGuess;
+    document.getElementById('wrongGuesses').innerHTML = wrongLetters;
     
 
     
@@ -109,29 +111,29 @@ var pressedWords = ['a','b','c','d','e','f','g','h','i','j','k',
         //count wins
         winsCount++;
         //changes the html
-        documentElementById('winsCount').innerHTML = winsCount;
+        document.getElementById('winsCount').innerHTML = winsCount;
         alert('You won, great job');
-        reset();
+        reset(); 
     }
+    console.log('winsCount');
 // Number of remaining guess equal zero,then you lose
 
-    elseif (remainingGuess=== 0);
+    elseif (remainingGuess === 0);
     {
         //count loses
         losesCount++;
         //changes the html
-        documentElementById('losesCount').innerHTML = losesCount;
-        alert('You have lost, hhahahahaha');
+        document.getElementById('losesCount').innerHTML = losesCount;
+        alert('You have lost!!!!');
         reset();
+        
     }
-
+    // console.log('losesCount++');
 
  }
 
 
 //Main
-
-startGame();
 
  document.onkeyup = function(event)
  {
@@ -144,7 +146,9 @@ startGame();
             choice = pressedWords.splice(i,1);
             comapare(alreadyGuessed);
             winLose();
+            
         }
+        
     }
 
  }
